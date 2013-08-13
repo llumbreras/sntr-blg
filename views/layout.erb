@@ -1,12 +1,29 @@
 <html>
 <head>
 	<title><%= title %></title>
+	<link href="http://twitter.github.io/bootstrap/assets/css/bootstrap.css" rel="stylesheet" >
+	<link href="http://twitter.github.io/bootstrap/assets/css/bootstrap.min.css" rel="stylesheet" >
 </head>
-<body>
-	<ul>
-		<li><a href="/">Home</a></li>
-		<li><a href="/posts/create">New Post</a></li>
-	</ul>
+<body style="padding-top: 50px;">
+	<div class="navbar navbar-fixed-top">
+		<div class="navbar-inner">
+			<div class="container">
+				<a class="brand" href="/">
+					Sinatra way
+				</a>
+				<ul>
+					<li><a href="/">Home</a></li>
+					<li><a href="/posts/create">New Post</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<% if flash[:notice] %>
+	<p class="alert alert-success"><%= flash[:notice] %>
+	<% end %>
+	<% if flash[:error] %>
+	<p class="alert alert-error"><%= flash[:error] %>
+	<% end %>
 	<%= yield %>
 </body>
 </html>

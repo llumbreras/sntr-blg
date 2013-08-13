@@ -16,11 +16,11 @@ get "/" do
 end
 
 post "/posts" do 
-	@post = Post.new(params[:id])
+	@post = Post.new(params[:post])
 	if @post.save
-		redirect "posts/#{@post.id}"
+		redirect "posts/#{@post.id}", :notice => "Successfully posted!"
 	else
-		erb :"posts/create"
+		redirect :"posts/create", :error => "Oops. Error occured. Try again!"
 	end
 end
 
